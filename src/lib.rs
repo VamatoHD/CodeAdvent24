@@ -26,4 +26,25 @@ pub mod load {
 
         (column1, column2)
     }
+
+    pub fn rows<T>(path: &str) -> Vec<Vec<T>>
+    where
+        T: FromStr,
+        <T as FromStr>::Err: Debug,
+    {
+        let file_content = fs::read_to_string(path).unwrap();
+        let mut res = Vec::new();
+
+        for line in file_content.lines() {
+            let mut temp = Vec::new();
+
+            for part in line.split_ascii_whitespace() {
+                let value = part.parse::<T>().unwrap();
+                temp.push(value);
+            }
+            res.push(temp);
+        }
+
+        res
+    }
 }

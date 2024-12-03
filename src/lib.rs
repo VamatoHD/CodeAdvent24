@@ -5,6 +5,10 @@ pub mod load {
     use std::fs;
     use std::str::FromStr;
 
+    pub fn load_file(path: &str) -> String {
+        fs::read_to_string(path).unwrap()
+    }
+
     pub fn dual_column<T>(path: &str) -> (Vec<T>, Vec<T>)
     where
         T: FromStr,

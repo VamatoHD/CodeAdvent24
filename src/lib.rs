@@ -51,4 +51,16 @@ pub mod load {
 
         res
     }
+
+    pub fn rows_to_chars(path:&str) -> Vec<Vec<char>> {
+        let file_content = fs::read_to_string(path).unwrap();
+        let mut res = Vec::new();
+
+        for line in file_content.lines() {
+            let value : Vec<char> = line.chars().collect();
+            res.push(value);
+        }
+
+        res
+    }
 }

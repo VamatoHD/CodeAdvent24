@@ -1,4 +1,4 @@
-use std::{collections::HashSet, usize};
+use std::collections::HashSet;
 
 pub fn load(path: &str) -> (Vec<bool>, Guard) {
     let file_content = std::fs::read_to_string(path).unwrap();
